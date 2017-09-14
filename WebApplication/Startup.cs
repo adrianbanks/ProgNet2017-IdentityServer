@@ -55,6 +55,7 @@ namespace WebApplication
                 ClientSecret = "secret",
                 Scope = { "openid", "profile", "email", "api1.read" },
                 Authority = "http://localhost:5000",
+                SignInScheme = "cookie",
                 RequireHttpsMetadata = false // <-- for demo only
             });
 
