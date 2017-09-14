@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -47,6 +48,7 @@ namespace WebApplication
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             app.UseCookieAuthentication(new CookieAuthenticationOptions { AuthenticationScheme = "cookie" });
             app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions
             {
