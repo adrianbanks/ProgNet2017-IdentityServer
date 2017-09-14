@@ -56,6 +56,7 @@ namespace WebApplication
                 Scope = { "openid", "profile", "email", "api1.read" },
                 Authority = "http://localhost:5000",
                 SignInScheme = "cookie",
+                GetClaimsFromUserInfoEndpoint = true,
                 RequireHttpsMetadata = false // <-- for demo only
             });
 
