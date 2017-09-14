@@ -17,6 +17,7 @@ namespace APIApplication
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseUrls("http://localhost:5002")
                 .UseApplicationInsights()
                 .Build();
 
