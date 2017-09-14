@@ -20,6 +20,8 @@ namespace IdentityServer
                 .AddInMemoryIdentityResources(new IdentityResource[0])
                 .AddTestUsers(new List<TestUser>())
                 .AddTemporarySigningCredential();
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,6 +35,9 @@ namespace IdentityServer
             }
 
             app.UseIdentityServer();
+
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
         }
 
         private ApiResource api1 = new ApiResource
