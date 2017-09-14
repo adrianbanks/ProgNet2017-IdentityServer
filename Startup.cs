@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Claims;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 using Microsoft.AspNetCore.Builder;
@@ -15,10 +16,28 @@ namespace IdentityServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityServer()
-                .AddInMemoryClients(new[] { clientCredentials })
+                .AddInMemoryClients(new[] { clientCredentials, mvcApp })
                 .AddInMemoryApiResources(new[] { api1 })
-                .AddInMemoryIdentityResources(new IdentityResource[0])
-                .AddTestUsers(new List<TestUser>())
+                .AddInMemoryIdentityResources(new IdentityResource[]
+                {
+                    new IdentityResources.OpenId(),
+                    new IdentityResources.Profile(),
+                    new IdentityResources.Email(),
+                })
+                .AddTestUsers(new List<TestUser>
+                {
+                    new TestUser
+                    {
+                        SubjectId = "123",
+                        Username = "scott",
+                        Password = "password",
+                        Claims =
+                        {
+                            new Claim("email", "scott@scottbrady91.com"),
+                            new Claim("website", "http://scottbrady91.com")
+                        }
+                    }
+                })
                 .AddTemporarySigningCredential();
 
             services.AddMvc();
@@ -57,6 +76,15 @@ namespace IdentityServer
             ClientSecrets = { new Secret("shhh".Sha256()) },
             AllowedGrantTypes = GrantTypes.ClientCredentials,
             AllowedScopes = { "api1.read" }
+        };
+
+        private Client mvcApp = new Client
+        {
+            ClientId = "prog_net",
+            ClientSecrets = { new Secret("secret".Sha256()) },
+            AllowedGrantTypes = GrantTypes.Hybrid,
+            AllowedScopes = { "openid", "profile", "email", "api1.read" },
+            RedirectUris = { "http://localhost:5001/signin-oidc" }
         };
     }
 }
