@@ -36,6 +36,17 @@ namespace IdentityServer
             app.UseIdentityServer();
         }
 
+        private ApiResource api1 = new ApiResource
+        {
+            Name = "api1",
+            DisplayName = "API #1",
+            Scopes =
+            {
+                new Scope("api1.read"),
+                new Scope("api1.write")
+            }
+        };
+
         private Client clientCredentials = new Client
         {
             ClientId = "oauth_client",
