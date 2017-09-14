@@ -27,6 +27,15 @@ namespace APIApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("read", policy =>
+                {
+                    policy.RequireClaim("sub");
+                    policy.RequireClaim("scope", "api1.read");
+                });
+            });
+
             // Add framework services.
             services.AddMvc();
         }
