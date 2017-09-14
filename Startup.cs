@@ -84,7 +84,8 @@ namespace IdentityServer
             ClientSecrets = { new Secret("secret".Sha256()) },
             AllowedGrantTypes = GrantTypes.Hybrid,
             AllowedScopes = { "openid", "profile", "email", "api1.read" },
-            RedirectUris = { "http://localhost:5001/signin-oidc" }
+            RedirectUris = { "http://localhost:5001/signin-oidc" },
+            LogoUri = "http://localhost:5000/signout-oidc"
         };
     }
 }
