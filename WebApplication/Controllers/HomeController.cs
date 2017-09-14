@@ -44,8 +44,8 @@ namespace WebApplication.Controllers
             var token = await HttpContext.Authentication.GetTokenAsync("access_token");
             client.SetBearerToken(token);
 
-            var response = client.GetStringAsync("http://localhost:5002/api/values");
-            var model = JArray.Parse(response.Result).ToString();
+            var response = await client.GetStringAsync("http://localhost:5002/api/values");
+            var model = JArray.Parse(response).ToString();
 
             return View("Contact", model);
         }
