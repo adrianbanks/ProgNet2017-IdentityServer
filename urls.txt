@@ -9,3 +9,6 @@ Post to http://localhost:5000/connect/token
 Use https://jwt.io to decode the token
 
 UI for identity server: https://github.com/IdentityServer/IdentityServer4.Quickstart.UI
+
+
+Url to check the API auth: http://localhost:5001/Home/CallApi
