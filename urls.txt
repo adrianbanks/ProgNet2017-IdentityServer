@@ -7,3 +7,5 @@ Post to http://localhost:5000/connect/token
     grant_type=client_credentials
 
 Use https://jwt.io to decode the token
+
+UI for identity server: https://github.com/IdentityServer/IdentityServer4.Quickstart.UI
