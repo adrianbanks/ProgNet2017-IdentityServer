@@ -5,12 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="APIApplication\**" />
     <Compile Remove="WebApplication\**" />
     <Compile Remove="_ReSharper.Caches\**" />
+    <Content Remove="APIApplication\**" />
     <Content Remove="WebApplication\**" />
     <Content Remove="_ReSharper.Caches\**" />
+    <EmbeddedResource Remove="APIApplication\**" />
     <EmbeddedResource Remove="WebApplication\**" />
     <EmbeddedResource Remove="_ReSharper.Caches\**" />
+    <None Remove="APIApplication\**" />
     <None Remove="WebApplication\**" />
     <None Remove="_ReSharper.Caches\**" />
   </ItemGroup>
