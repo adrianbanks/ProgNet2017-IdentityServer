@@ -3,7 +3,6 @@ using IdentityServer4.Models;
 using IdentityServer4.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -16,8 +15,8 @@ namespace IdentityServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityServer()
-                .AddInMemoryClients(new Client[0])
-                .AddInMemoryApiResources(new ApiResource[0])
+                .AddInMemoryClients(new[] { clientCredentials })
+                .AddInMemoryApiResources(new[] { api1 })
                 .AddInMemoryIdentityResources(new IdentityResource[0])
                 .AddTestUsers(new List<TestUser>())
                 .AddTemporarySigningCredential();
