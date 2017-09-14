@@ -35,5 +35,13 @@ namespace IdentityServer
 
             app.UseIdentityServer();
         }
+
+        private Client clientCredentials = new Client
+        {
+            ClientId = "oauth_client",
+            ClientSecrets = { new Secret("shhh".Sha256()) },
+            AllowedGrantTypes = GrantTypes.ClientCredentials,
+            AllowedScopes = { "api1.read" }
+        };
     }
 }
