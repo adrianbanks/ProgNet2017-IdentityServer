@@ -24,8 +24,12 @@
     }
 </ul>
 
+<hr/>
+
 Token: @await ViewContext.HttpContext.Authentication.GetTokenAsync("access_token")
 
-<br/>
+<hr/>
 
+@Html.ActionLink("Get values from the API", "CallApi")
+<br/>
 Values: @Model
