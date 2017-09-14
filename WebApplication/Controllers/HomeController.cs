@@ -49,5 +49,13 @@ namespace WebApplication.Controllers
 
             return View("Contact", model);
         }
+
+        public async Task<IActionResult> SignOut()
+        {
+            await HttpContext.Authentication.SignOutAsync("cookie");
+            await HttpContext.Authentication.SignOutAsync("OpenIdConnect");
+
+            return Redirect("/");
+        }
     }
 }
