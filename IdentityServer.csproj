@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="WebApplication\**" />
     <Compile Remove="_ReSharper.Caches\**" />
+    <Content Remove="WebApplication\**" />
     <Content Remove="_ReSharper.Caches\**" />
+    <EmbeddedResource Remove="WebApplication\**" />
     <EmbeddedResource Remove="_ReSharper.Caches\**" />
+    <None Remove="WebApplication\**" />
     <None Remove="_ReSharper.Caches\**" />
   </ItemGroup>
 
