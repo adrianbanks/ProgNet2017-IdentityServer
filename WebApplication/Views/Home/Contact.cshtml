@@ -22,5 +22,6 @@
     {
         <li>@claim.Type: @claim.Value</li>
     }
-    <li>@await ViewContext.HttpContext.Authentication.GetTokenAsync("access_token")</li>
 </ul>
+
+Token: @await ViewContext.HttpContext.Authentication.GetTokenAsync("access_token")
