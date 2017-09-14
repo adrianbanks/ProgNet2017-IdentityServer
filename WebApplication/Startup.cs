@@ -59,6 +59,7 @@ namespace WebApplication
                 Authority = "http://localhost:5000",
                 SignInScheme = "cookie",
                 GetClaimsFromUserInfoEndpoint = true,
+                SaveTokens = true,
                 RequireHttpsMetadata = false // <-- for demo only
             });
 
