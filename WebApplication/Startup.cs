@@ -47,6 +47,17 @@ namespace WebApplication
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseCookieAuthentication(new CookieAuthenticationOptions { AuthenticationScheme = "cookie" });
+            app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions
+            {
+                ClientId = "prog_net",
+                ResponseType = "code id_token",
+                ClientSecret = "secret",
+                Scope = { "openid", "profile", "email", "api1.read" },
+                Authority = "http://localhost:5000",
+                RequireHttpsMetadata = false // <-- for demo only
+            });
+
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
